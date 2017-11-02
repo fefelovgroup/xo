@@ -5,9 +5,9 @@ import (
 
 	_ "github.com/denisenkom/go-mssqldb"
 
+	"github.com/fefelovgroup/xo/internal"
+	"github.com/fefelovgroup/xo/models"
 	"github.com/knq/snaker"
-	"github.com/knq/xo/internal"
-	"github.com/knq/xo/models"
 )
 
 func init() {

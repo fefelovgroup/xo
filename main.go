@@ -20,7 +20,7 @@ import (
 	"github.com/fefelovgroup/xo/models"
 	"github.com/knq/dburl"
 
-	_ "github.com/knq/xo/loaders"
+	_ "github.com/fefelovgroup/xo/loaders"
 	_ "github.com/knq/xoutil"
 )
 
