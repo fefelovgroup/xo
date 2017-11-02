@@ -32,6 +32,7 @@ func (a *ArgType) NewTemplateFuncs() template.FuncMap {
 		"hascolumn":          a.hascolumn,
 		"hasfield":           a.hasfield,
 		"getstartcount":      a.getstartcount,
+		"colprefixnamessqlx": a.colprefixnamessqlx,
 	}
 }
 
