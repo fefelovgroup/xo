@@ -308,6 +308,34 @@ func (a *ArgType) colprefixnames(fields []*Field, prefix string, ignoreNames ...
 	return str
 }
 
+// colprefixnamessqlx creates a list of the column names found in fields with the
+// supplied prefix, excluding any Field with Name contained in ignoreNames.
+//
+// Used to present a comma separated list of column names with a prefix. Used in
+// a SELECT, or UPDATE (ie, ":field_1, :field_2, :field_3, ...").
+func (a *ArgType) colprefixnamessqlx(fields []*Field, prefix string, ignoreNames ...string) string {
+	ignore := map[string]bool{}
+	for _, n := range ignoreNames {
+		ignore[n] = true
+	}
+
+	str := ""
+	i := 0
+	for _, f := range fields {
+		if ignore[f.Name] {
+			continue
+		}
+
+		if i != 0 {
+			str = str + ", "
+		}
+		str = str + prefix + a.colname(f.Col)
+		i++
+	}
+
+	return str
+}
+
 // colvals creates a list of value place holders for fields excluding any Field
 // with Name contained in ignoreNames.
 //
